@@ -1,0 +1,54 @@
+name: CI Quality Gates
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  quality-gate:
+    name: Lint, Format, Types, and Tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install uv
+        run: |
+          curl -LsSf https://astral.sh/uv/install.sh | sh
+          echo "$HOME/.local/bin" >> $GITHUB_PATH
+
+      - name: Cache uv Cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/uv
+          key: ${{ runner.os }}-uv-${{ hashFiles('**/pyproject.toml', '**/uv.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-uv-
+
+      - name: Install Project Workspaces
+        run: uv sync
+
+      - name: Run Ruff Lint Check
+        run: uv run ruff check .
+
+      - name: Run Ruff Format Check
+        run: uv run ruff format --check .
+
+      - name: Run Mypy Strict Type Check
+        run: uv run mypy .
+
+      - name: Run Pytest Test Suite
+        run: uv run pytest
+
+      - name: Run Semgrep Security Check
+        run: |
+          pip install semgrep
+          semgrep --config=.semgrep/semgrep.yaml .

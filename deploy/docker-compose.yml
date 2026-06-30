@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ../
+      dockerfile: deploy/Dockerfile.backend
+    ports:
+      - "8000:8000"
+    environment:
+      - ENV=development
+      - DATABASE_URL=sqlite:///./voltaudit.db
+      - LOG_LEVEL=INFO
+    volumes:
+      - sqlite_data:/app/data
+
+  frontend:
+    build:
+      context: ../
+      dockerfile: deploy/Dockerfile.frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+
+volumes:
+  sqlite_data:

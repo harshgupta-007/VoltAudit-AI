@@ -1,0 +1,36 @@
+rules:
+  - id: avoid-raw-sql-execution
+    pattern: |
+      $CONN.execute("..." + $VAR)
+    message: "Potential SQL injection vulnerability. Do not construct SQL queries dynamically using raw string concatenation. Use parameterized queries or SQLAlchemy/SQLModel expression builders."
+    languages: [python]
+    severity: ERROR
+
+  - id: prevent-shell-subprocess
+    patterns:
+      - pattern-either:
+          - pattern: subprocess.Popen(..., shell=True, ...)
+          - pattern: subprocess.run(..., shell=True, ...)
+          - pattern: subprocess.call(..., shell=True, ...)
+          - pattern: os.system(...)
+      - pattern-not: subprocess.run(..., shell=True, executable=..., ...)
+    message: "Using shell=True or os.system can lead to remote code execution vulnerabilities if inputs are untrusted. Avoid spawning shell processes whenever possible."
+    languages: [python]
+    severity: ERROR
+
+  - id: unsafe-yaml-load
+    pattern: yaml.load($X)
+    message: "Loading YAML config files with yaml.load() can lead to arbitrary code execution. Always use yaml.safe_load() or specify Loader=yaml.SafeLoader."
+    languages: [python]
+    severity: ERROR
+
+  - id: avoid-hardcoded-keys
+    patterns:
+      - pattern-either:
+          - pattern: $API_KEY = "AIzaSy..."
+          - pattern: $JWT_KEY = "eyJ..."
+          - pattern: $PASS = "secret..."
+      - pattern-not: $API_KEY = os.environ[...]
+    message: "Avoid hardcoding secret API keys, tokens, or credentials in source code. Inject them using environment variables."
+    languages: [python]
+    severity: ERROR

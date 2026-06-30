@@ -1,0 +1,100 @@
+# VoltAudit AI .gitignore
+
+# Python virtual environment and caching
+.venv/
+venv/
+ENV/
+env/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.python-version
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.tox/
+.nox/
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Python package builds
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# JavaScript/TypeScript Node environments
+node_modules/
+jspm_packages/
+.npm
+.eslintcache
+.stylelintcache
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Frontend framework build directories
+/frontend/dist/
+/frontend/.next/
+/frontend/out/
+/frontend/build/
+
+# IDEs and OS metadata
+.idea/
+.vscode/
+.gemini/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+.DS_Store
+Thumbs.db
+
+# Databases and Local Storage
+*.db
+*.sqlite
+*.sqlite3
+*.log
+
+# Sensitive environment configs
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+*.pem
+*.key
+*.cert
+*.pfx
+
+# Secrets and credentials
+certs/
+secrets/
+credentials/
+.netrc
+
+# Semgrep and local tool outputs
+semgrep-results.json
+semgrep-results.sarif
+.semgrep_cache/
