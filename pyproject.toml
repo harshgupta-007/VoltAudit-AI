@@ -4,7 +4,10 @@ version = "0.1.0"
 description = "Enterprise AI Workforce for Intelligent Invoice Auditing"
 readme = "README.md"
 requires-python = ">=3.11"
-dependencies = []
+dependencies = [
+    "streamlit>=1.35.0",
+]
+
 
 [dependency-groups]
 dev = [
@@ -54,7 +57,8 @@ line-ending = "auto"
 
 [tool.mypy]
 mypy_path = "agents:mcp"
-python_version = "3.11"
+python_version = "3.12"
+
 strict = true
 explicit_package_bases = true
 disallow_untyped_decorators = false
