@@ -189,16 +189,18 @@ def save_audit_run(invoice_id: str, compliance_score: int, outcome: str) -> str:
     executed_at = datetime.now(UTC).isoformat()
 
     conn = get_connection()
-    cursor = conn.cursor()
-    cursor.execute(
-        """
-        INSERT INTO audit_runs (id, invoice_id, executed_at, compliance_score, outcome)
-        VALUES (?, ?, ?, ?, ?);
-        """,
-        (run_id, invoice_id, executed_at, compliance_score, outcome),
-    )
-    conn.commit()
-    conn.close()
+    try:
+        cursor = conn.cursor()
+        cursor.execute(
+            """
+            INSERT INTO audit_runs (id, invoice_id, executed_at, compliance_score, outcome)
+            VALUES (?, ?, ?, ?, ?);
+            """,
+            (run_id, invoice_id, executed_at, compliance_score, outcome),
+        )
+        conn.commit()
+    finally:
+        conn.close()
 
     return json.dumps({"audit_run_id": run_id, "saved_status": True})
 
@@ -209,32 +211,34 @@ def create_discrepancy_records(audit_run_id: str, discrepancies: list[dict[str, 
     import uuid
 
     conn = get_connection()
-    cursor = conn.cursor()
-    created_count = 0
+    try:
+        cursor = conn.cursor()
+        created_count = 0
 
-    for disc in discrepancies:
-        disc_id = str(uuid.uuid4())
-        cursor.execute(
-            """
-            INSERT INTO discrepancies (
-                id, audit_run_id, type, severity, description, expected_value, actual_value
+        for disc in discrepancies:
+            disc_id = str(uuid.uuid4())
+            cursor.execute(
+                """
+                INSERT INTO discrepancies (
+                    id, audit_run_id, type, severity, description, expected_value, actual_value
+                )
+                VALUES (?, ?, ?, ?, ?, ?, ?);
+                """,
+                (
+                    disc_id,
+                    audit_run_id,
+                    disc.get("type"),
+                    disc.get("severity"),
+                    disc.get("description"),
+                    str(disc.get("expected_value", "")),
+                    str(disc.get("actual_value", "")),
+                ),
             )
-            VALUES (?, ?, ?, ?, ?, ?, ?);
-            """,
-            (
-                disc_id,
-                audit_run_id,
-                disc.get("type"),
-                disc.get("severity"),
-                disc.get("description"),
-                str(disc.get("expected_value", "")),
-                str(disc.get("actual_value", "")),
-            ),
-        )
-        created_count += 1
+            created_count += 1
 
-    conn.commit()
-    conn.close()
+        conn.commit()
+    finally:
+        conn.close()
 
     return json.dumps({"discrepancies_created": created_count})
 
