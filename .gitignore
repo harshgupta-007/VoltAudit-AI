@@ -76,6 +76,9 @@ Thumbs.db
 *.sqlite
 *.sqlite3
 *.log
+notifications.json
+/backend/data/
+
 
 # Sensitive environment configs
 .env

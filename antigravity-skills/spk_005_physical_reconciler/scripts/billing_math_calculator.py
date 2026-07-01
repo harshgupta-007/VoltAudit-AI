@@ -42,7 +42,7 @@ def billing_math_calculator(
                 {
                     "item_index": idx,
                     "description": (
-                        f"Arithmetic mismatch. Expected {expected_total}, " f"billed {billed_total}"
+                        f"Arithmetic mismatch. Expected {expected_total}, billed {billed_total}"
                     ),
                     "expected": expected_total,
                     "billed": billed_total,
