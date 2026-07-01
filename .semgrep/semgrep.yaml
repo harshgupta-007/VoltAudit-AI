@@ -34,3 +34,18 @@ rules:
     message: "Avoid hardcoding secret API keys, tokens, or credentials in source code. Inject them using environment variables."
     languages: [python]
     severity: ERROR
+
+  - id: path-traversal-vulnerability
+    patterns:
+      - pattern-either:
+          - pattern: open(..., $VAR + ...)
+          - pattern: open(..., f"...{$VAR}...")
+    message: "Potential Path Traversal vulnerability. Sanitize input paths before opening files."
+    languages: [python]
+    severity: WARNING
+
+  - id: unsafe-deserialization-pickle
+    pattern: pickle.loads(...)
+    message: "Using pickle.loads() on untrusted inputs can execute arbitrary code. Use JSON instead."
+    languages: [python]
+    severity: ERROR
