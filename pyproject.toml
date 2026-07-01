@@ -24,7 +24,9 @@ dev = [
 
 
 [tool.uv]
+exclude-newer = "2026-07-01"
 workspace = { members = ["backend", "agents", "mcp"] }
+
 
 [tool.ruff]
 line-length = 100
@@ -50,11 +52,13 @@ skip-magic-trailing-comma = false
 line-ending = "auto"
 
 [tool.mypy]
+mypy_path = "agents:mcp"
 python_version = "3.11"
 strict = true
 explicit_package_bases = true
 disallow_untyped_decorators = false
 ignore_missing_imports = true
+
 warn_unused_configs = true
 warn_redundant_casts = true
 warn_unused_ignores = true
