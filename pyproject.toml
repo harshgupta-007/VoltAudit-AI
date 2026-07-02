@@ -23,6 +23,7 @@ dev = [
     "semgrep>=1.73.0",
     "pydantic>=2.7.4",
     "mcp>=0.1.0",
+    "playwright>=1.44.0",
 ]
 
 

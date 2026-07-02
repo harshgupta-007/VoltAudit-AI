@@ -101,3 +101,6 @@ credentials/
 semgrep-results.json
 semgrep-results.sarif
 .semgrep_cache/
+
+# Recorded video binaries
+/demo/
