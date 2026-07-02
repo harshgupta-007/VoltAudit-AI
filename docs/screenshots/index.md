@@ -1,6 +1,7 @@
 # 📸 VoltAudit AI Demo Screenshots Gallery
 
-This gallery details the visual interfaces and execution results captured during local application startup audits.
+This gallery details the visual interfaces and execution results
+captured during local application startup audits.
 
 ---
 
