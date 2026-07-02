@@ -1,5 +1,5 @@
 # Multi-stage build using uv for performance and reproducibility
-FROM python:3.11-slim AS builder
+FROM python:3.12-slim AS builder
 
 ENV DEBIAN_FRONTEND=noninteractive
 ENV PYTHONDONTWRITEBYTECODE=1
@@ -16,15 +16,17 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 RUN curl -LsSf https://astral.sh/uv/install.sh | sh
 ENV PATH="/root/.local/bin:$PATH"
 
-# Copy workspaces configuration
-COPY pyproject.toml /app/
+# Copy workspaces configuration and lockfile
+COPY pyproject.toml uv.lock /app/
 COPY backend/pyproject.toml /app/backend/
+COPY agents/pyproject.toml /app/agents/
+COPY mcp/pyproject.toml /app/mcp/
 
 # Install dependencies (exclude source tree copying for layer caching)
 RUN uv sync --no-dev --no-install-project
 
 # Runtime stage
-FROM python:3.11-slim AS runner
+FROM python:3.12-slim AS runner
 
 # Create a non-root system user for security
 RUN groupadd -r appgroup && useradd -r -g appgroup -s /sbin/nologin appuser
@@ -35,8 +37,11 @@ WORKDIR /app
 COPY --from=builder /app/.venv /app/.venv
 ENV PATH="/app/.venv/bin:$PATH"
 
-# Copy application source code
-COPY backend/voltaudit_backend /app/voltaudit_backend
+# Copy application source code and all workspaces
+COPY backend /app/backend
+COPY agents /app/agents
+COPY mcp /app/mcp
+COPY antigravity-skills /app/antigravity-skills
 
 # Set owner to non-root user
 RUN chown -R appuser:appgroup /app
@@ -48,4 +53,5 @@ ENV ENV=production
 ENV HOST=0.0.0.0
 ENV PORT=8000
 
+WORKDIR /app/backend
 CMD ["uvicorn", "voltaudit_backend.main:app", "--host", "0.0.0.0", "--port", "8000"]

@@ -12,14 +12,16 @@ services:
       - DATABASE_URL=sqlite:///./voltaudit.db
       - LOG_LEVEL=INFO
     volumes:
-      - sqlite_data:/app/data
+      - sqlite_data:/app/mcp/voltaudit_mcp
 
   frontend:
     build:
       context: ../
       dockerfile: deploy/Dockerfile.frontend
     ports:
-      - "3000:80"
+      - "8501:8501"
+    environment:
+      - API_BASE_URL=http://backend:8000/api/v1
     depends_on:
       - backend
 

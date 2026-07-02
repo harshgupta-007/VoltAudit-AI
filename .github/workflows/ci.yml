@@ -1,54 +1,41 @@
-name: CI Quality Gates
+name: VoltAudit AI CI
 
 on:
   push:
-    branches: [ main ]
+    branches: [ master ]
   pull_request:
-    branches: [ main ]
+    branches: [ master ]
 
 jobs:
-  quality-gate:
-    name: Lint, Format, Types, and Tests
+  validate:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v4
+    - name: Checkout Code
+      uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.12'
 
-      - name: Install uv
-        run: |
-          curl -LsSf https://astral.sh/uv/install.sh | sh
-          echo "$HOME/.local/bin" >> $GITHUB_PATH
+    - name: Install uv
+      run: curl -LsSf https://astral.sh/uv/install.sh | sh
 
-      - name: Cache uv Cache
-        uses: actions/cache@v4
-        with:
-          path: ~/.cache/uv
-          key: ${{ runner.os }}-uv-${{ hashFiles('**/pyproject.toml', '**/uv.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-uv-
+    - name: Install Dependencies
+      run: uv sync
 
-      - name: Install Project Workspaces
-        run: uv sync
+    - name: Check Formatting (Ruff)
+      run: uv run ruff format --check .
 
-      - name: Run Ruff Lint Check
-        run: uv run ruff check .
+    - name: Linting (Ruff)
+      run: uv run ruff check .
 
-      - name: Run Ruff Format Check
-        run: uv run ruff format --check .
+    - name: Static Type Check (Mypy)
+      run: uv run mypy .
 
-      - name: Run Mypy Strict Type Check
-        run: uv run mypy .
+    - name: Run Tests (Pytest)
+      run: uv run pytest
 
-      - name: Run Pytest Test Suite
-        run: uv run pytest
-
-      - name: Run Semgrep Security Check
-        run: |
-          pip install semgrep
-          semgrep --config=.semgrep/semgrep.yaml .
+    - name: Security Scan (Semgrep)
+      run: uv run semgrep --config .semgrep/semgrep.yaml .
