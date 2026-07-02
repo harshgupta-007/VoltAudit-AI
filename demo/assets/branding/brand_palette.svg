@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" width="100%" height="100%">
+  <rect width="100%" height="100%" fill="#0f172a" rx="20" />
+
+  <text x="400" y="50" font-family="'Outfit', sans-serif" font-size="28" font-weight="700" fill="#ffffff" text-anchor="middle" letter-spacing="1">VOLTAUDIT BRAND COLORS</text>
+
+  <!-- Primary Color Slate 900 -->
+  <g transform="translate(80, 100)">
+    <rect width="180" height="180" fill="#0f172a" stroke="#1e293b" stroke-width="4" rx="10" />
+    <text x="90" y="210" font-family="'Outfit', sans-serif" font-size="16" font-weight="600" fill="#ffffff" text-anchor="middle">PRIMARY SLATE</text>
+    <text x="90" y="235" font-family="'Outfit', sans-serif" font-size="14" font-weight="400" fill="#94a3b8" text-anchor="middle">#0F172A</text>
+  </g>
+
+  <!-- Secondary Color Blue 500 -->
+  <g transform="translate(310, 100)">
+    <rect width="180" height="180" fill="#3b82f6" rx="10" />
+    <text x="90" y="210" font-family="'Outfit', sans-serif" font-size="16" font-weight="600" fill="#ffffff" text-anchor="middle">ACCENT BLUE</text>
+    <text x="90" y="235" font-family="'Outfit', sans-serif" font-size="14" font-weight="400" fill="#94a3b8" text-anchor="middle">#3B82F6</text>
+  </g>
+
+  <!-- Accent Color Amber 500 -->
+  <g transform="translate(540, 100)">
+    <rect width="180" height="180" fill="#f59e0b" rx="10" />
+    <text x="90" y="210" font-family="'Outfit', sans-serif" font-size="16" font-weight="600" fill="#ffffff" text-anchor="middle">ALERT AMBER</text>
+    <text x="90" y="235" font-family="'Outfit', sans-serif" font-size="14" font-weight="400" fill="#94a3b8" text-anchor="middle">#F59E0B</text>
+  </g>
+</svg>

@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="50%" stop-color="#1e293b" />
+      <stop offset="100%" stop-color="#020617" />
+    </linearGradient>
+    <linearGradient id="textGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="100%" stop-color="#3b82f6" />
+    </linearGradient>
+    <linearGradient id="badgeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#f59e0b" />
+      <stop offset="100%" stop-color="#d97706" />
+    </linearGradient>
+  </defs>
+
+  <rect width="100%" height="100%" fill="url(#bg)" />
+
+  <!-- Glowing visual elements -->
+  <circle cx="150" cy="150" r="250" fill="#3b82f6" opacity="0.08" filter="blur(60px)" />
+  <circle cx="1100" cy="500" r="300" fill="#f59e0b" opacity="0.08" filter="blur(60px)" />
+
+  <!-- Big Bold Text Layout -->
+  <g transform="translate(100, 160)">
+    <!-- Category Badge -->
+    <g transform="translate(0, 0)">
+      <rect width="260" height="46" fill="url(#badgeGrad)" rx="8" />
+      <text x="130" y="29" font-family="'Outfit', sans-serif" font-size="18" font-weight="800" fill="#ffffff" text-anchor="middle" letter-spacing="1.5">GOOGLE ADK WORKFORCE</text>
+    </g>
+
+    <text x="0" y="140" font-family="'Outfit', sans-serif" font-size="86" font-weight="900" fill="url(#textGrad)" letter-spacing="-1">VoltAudit AI</text>
+    <text x="0" y="240" font-family="'Outfit', sans-serif" font-size="42" font-weight="700" fill="#ffffff" letter-spacing="-0.5">Autonomous Utility Bill Auditing</text>
+
+    <!-- Checklist items indicators -->
+    <g transform="translate(0, 310)" font-family="'Outfit', sans-serif" font-size="22" font-weight="600" fill="#94a3b8">
+      <text x="40" y="0">✓ Sequential AI Specialist Agents</text>
+      <text x="40" y="45">✓ Zero-Trust Database Isolation via MCP</text>
+      <text x="40" y="90">✓ Dynamic Human-in-the-Loop Safeguards</text>
+      <!-- Draw check marks -->
+      <path d="M 0 -8 L 10 2 L 25 -15" fill="none" stroke="#3b82f6" stroke-width="4" stroke-linecap="round" />
+      <path d="M 0 37 L 10 47 L 25 30" fill="none" stroke="#3b82f6" stroke-width="4" stroke-linecap="round" />
+      <path d="M 0 82 L 10 92 L 25 75" fill="none" stroke="#3b82f6" stroke-width="4" stroke-linecap="round" />
+    </g>
+  </g>
+
+  <!-- Giant floating logo badge on right -->
+  <g transform="translate(900, 320) scale(1.4)">
+    <circle cx="0" cy="0" r="140" fill="#1e293b" stroke="#3b82f6" stroke-width="6" opacity="0.8" />
+    <g transform="translate(-160, -180) scale(0.7)">
+      <path d="M 50 180 L 120 250 L 280 90" fill="none" stroke="#f59e0b" stroke-width="32" stroke-linecap="round" stroke-linejoin="round" />
+      <path d="M 180 30 L 70 200 L 150 200 L 110 320 L 240 150 L 160 150 Z" fill="#3b82f6" />
+    </g>
+  </g>
+</svg>

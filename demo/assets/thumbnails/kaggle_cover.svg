@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#1e293b" />
+    </linearGradient>
+    <linearGradient id="glowGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3b82f6" opacity="0.15" />
+      <stop offset="100%" stop-color="#f59e0b" opacity="0.15" />
+    </linearGradient>
+  </defs>
+
+  <rect width="100%" height="100%" fill="url(#bg)" />
+
+  <!-- Glowing Abstract Spheres -->
+  <circle cx="960" cy="540" r="600" fill="url(#glowGrad)" filter="blur(80px)" />
+
+  <!-- Branding Header -->
+  <g transform="translate(960, 360)" text-anchor="middle">
+    <!-- Mini Logo -->
+    <g transform="translate(-60, -140) scale(0.5)">
+      <path d="M 50 180 L 120 250 L 280 90" fill="none" stroke="#f59e0b" stroke-width="32" stroke-linecap="round" stroke-linejoin="round" />
+      <path d="M 180 30 L 70 200 L 150 200 L 110 320 L 240 150 L 160 150 Z" fill="#3b82f6" />
+    </g>
+
+    <text x="0" y="20" font-family="'Outfit', sans-serif" font-size="110" font-weight="900" fill="#ffffff" letter-spacing="2">VoltAudit AI</text>
+    <text x="0" y="100" font-family="'Outfit', sans-serif" font-size="36" font-weight="600" fill="#3b82f6" letter-spacing="1">KAGGLE CAPSTONE PROJECT SUBMISSION</text>
+
+    <rect x="-300" y="140" width="600" height="4" fill="#f59e0b" rx="2" />
+
+    <text x="0" y="200" font-family="'Outfit', sans-serif" font-size="24" font-weight="400" fill="#94a3b8">Autonomous Multi-Agent Audit Workforce &amp; Bounded Model Context Protocol Tools</text>
+    <text x="0" y="240" font-family="'Outfit', sans-serif" font-size="16" font-weight="600" fill="#64748b" letter-spacing="2">GOVERNANCE • SECURITY • COMPLIANCE • SRE</text>
+  </g>
+</svg>
