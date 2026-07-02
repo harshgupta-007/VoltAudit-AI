@@ -109,7 +109,9 @@ def get_audit_findings(invoice_id: str) -> AuditFindingsResponse:
         disc = recon["quantity_discrepancy"]
         discrepancies.append(
             DiscrepancyInfo(
-                type=disc["type"], severity=disc["severity"], description=disc["description"]
+                type=disc["type"],
+                severity=disc.get("severity", "MEDIUM"),
+                description=disc["description"],
             )
         )
 
