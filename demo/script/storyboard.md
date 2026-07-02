@@ -1,0 +1,13 @@
+# 🎬 VoltAudit AI Storyboard
+
+| Scene | Duration | Visual Asset | Camera Movement | Voice-Over / Audio | On-Screen Text | Transition | Purpose |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| **01** | 15s | `demo/assets/branding/title_card.png` | Zoom-in slowly (10%) | "Welcome to the release presentation of VoltAudit AI..." | **VoltAudit AI**<br>*Intelligent Utility Cost Audits* | Fade In | Introduce the platform and define its core value proposition. |
+| **02** | 25s | Dashboard Home screenshot | Pan from top metrics to list | "Utility invoices in enterprise environments are highly complex..." | **The Enterprise Billing Problem**<br>• Outdated Rates<br>• Calculation Errors | Cross Dissolve | Establish the paint points and manual auditing leaks. |
+| **03** | 30s | System Architecture Diagram | Zoom to Database boundary | "VoltAudit AI addresses this through a decoupled..." | **Zero-Trust Architecture**<br>• FastAPI Backend<br>• Isolated SQLite via MCP | Cross Dissolve | Explain the decoupled layers and data security boundary. |
+| **04** | 35s | AI Workforce Sequence Diagram | Pan down sequence list | "The core reasoning engine is built around Google's ADK..." | **AI Specialist Workforce**<br>• Ingestion Specialist (WRK-002)<br>• Reconciler (WRK-006) | Cut | Detail the ADK multi-agent registration and sequential loops. |
+| **05** | 45s | Video demo (clean run) | Focus on progress bar | "Let's see the system in action. We upload a clean invoice..." | **Demo: Clean Run**<br>• Compliance Score: 100/100<br>• Status: Approved | Cut | Verify the system pipeline behaves correctly for ideal inputs. |
+| **06** | 30s | Video demo (dirty run) | Focus on metrics panel | "When a dirty invoice containing billing math errors is..." | **Demo: Flagged Deviations**<br>• Compliance Score: 70/100<br>• Manual Review Triggered | Cut | Show anomaly tracking and scorecard risk deductions. |
+| **07** | 20s | Human override queue UI | Focus on input textbox | "Under the Human Review Queue, administrators inspect..." | **Human-in-the-Loop Gateway**<br>• Override justification validation | Cross Dissolve | Present governance rules preventing automatic payouts. |
+| **08** | 20s | Swagger docs UI / Load test logs | Pan across API paths | "VoltAudit AI is fully containerized and production-ready..." | **Production Validated**<br>• Load Tests: >20 runs/sec<br>• Mypy and Semgrep clean | Cross Dissolve | Highlight SRE readiness metrics and strict QA pipeline gates. |
+| **09** | 20s | `demo/assets/branding/closing_card.png` | Zoom-out slowly (10%) | "VoltAudit AI combines enterprise multi-agent ADK..." | **VoltAudit AI**<br>👉 github.com/harshgupta-007/VoltAudit-AI | Fade to Black | Conclude, call-to-action link to remote repository. |

@@ -103,4 +103,4 @@ semgrep-results.sarif
 .semgrep_cache/
 
 # Recorded video binaries
-/demo/
+/demo/raw/

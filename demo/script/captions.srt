@@ -1,0 +1,107 @@
+1
+00:00:00,000 --> 00:00:05,000
+Welcome to the release presentation of VoltAudit AI.
+
+2
+00:00:05,000 --> 00:00:10,000
+VoltAudit AI is an enterprise-grade utility bill auditing platform
+
+3
+00:00:10,000 --> 00:00:15,000
+designed to identify pricing discrepancies and prevent payment losses.
+
+4
+00:00:15,000 --> 00:00:20,000
+Utility invoices in enterprise environments are highly complex and prone to errors.
+
+5
+00:00:20,000 --> 00:00:27,000
+Discrepancies in rates, peak hours, and duplicate billings lead to millions in losses.
+
+6
+00:00:27,000 --> 00:00:32,000
+Auditing these manually is slow and prone to oversight.
+
+7
+00:00:32,000 --> 00:00:40,000
+VoltAudit AI addresses this through a decoupled, multi-layered architecture.
+
+8
+00:00:40,000 --> 00:00:45,000
+A FastAPI backend processes requests, exposing tools to the frontend.
+
+9
+00:00:45,000 --> 00:00:52,000
+The data access layer is strictly isolated behind Model Context Protocol stdio interfaces.
+
+10
+00:00:52,000 --> 00:01:00,000
+This guards the underlying SQLite database from direct external access.
+
+11
+00:01:00,000 --> 00:01:05,000
+The core reasoning engine is built around Google's Agent Development Kit,
+
+12
+00:01:05,000 --> 00:01:10,000
+coordinating an active workforce of eight specialized agents.
+
+13
+00:01:10,000 --> 00:01:15,000
+From ingestion and vendor resolution to duplicate checks,
+
+14
+00:01:15,000 --> 00:01:22,000
+each worker acts sequentially, communicating through a shared execution context.
+
+15
+00:01:22,000 --> 00:01:27,000
+Let's see the system in action using the Streamlit dashboard interface.
+
+16
+00:01:27,000 --> 00:01:32,000
+We submit a clean utility invoice, and progress indicators track each agent.
+
+17
+00:01:32,000 --> 00:01:40,000
+The system resolves all checks successfully, grading the run with a perfect score.
+
+18
+00:01:40,000 --> 00:01:45,000
+When a dirty invoice containing math errors is uploaded, the reconciler flags it.
+
+19
+00:01:45,000 --> 00:01:52,000
+The risk specialist weighs the deviations, immediately triggering a human approval gateway.
+
+20
+00:01:52,000 --> 00:02:00,000
+Under the Human Review Queue, administrators inspect the flagged discrepancies.
+
+21
+00:02:00,000 --> 00:02:05,000
+An operator must write a valid justification text parsed by our governance override skill.
+
+22
+00:02:05,000 --> 00:02:12,000
+Only approved justifications can bypass the hold and update the status.
+
+23
+00:02:12,000 --> 00:02:17,000
+VoltAudit AI is fully containerized and production-ready.
+
+24
+00:02:17,000 --> 00:02:22,000
+With pre-commit quality gates, rigorous type-safety, and local load test validation,
+
+25
+00:02:22,000 --> 00:02:30,000
+the repository ensures zero downtime and absolute stability.
+
+26
+00:02:30,000 --> 00:02:35,000
+VoltAudit AI combines enterprise multi-agent ADK systems with a secure architecture.
+
+27
+00:02:35,000 --> 00:02:40,000
+Delivering intelligent utility cost control. Thank you.
