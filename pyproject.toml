@@ -24,6 +24,7 @@ dev = [
     "pydantic>=2.7.4",
     "mcp>=0.1.0",
     "playwright>=1.44.0",
+    "gTTS>=2.5.1",
 ]
 
 
